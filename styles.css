@@ -105,6 +105,9 @@ footer { display: flex; justify-content: space-between; border-top: 1px solid va
   .term-definition div { grid-template-columns: 1fr; gap: 2px; padding: 7px 0; }
   .prose { padding-bottom: 66px; }
   .prose h2 { margin-top: 36px; font-size: 19px; }
+  .article-image { width: calc(100% + 40px); margin-right: -20px; margin-left: -20px; }
+  .article-image img { border-inline: 0; }
+  .article-image figcaption { padding: 0 20px; }
   footer { flex-direction: column; gap: 8px; padding: 22px 0 28px; line-height: 1.5; }
 }
 
