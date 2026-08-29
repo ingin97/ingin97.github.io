@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Context Engineering: why an LLM's context is a budget, not a target." />
+    <link rel="canonical" href="https://ingebrigtnygard.com/blog/context-engineering.html" />
+    <meta property="og:title" content="Context Engineering — Ingebrigt Nygård" />
+    <meta property="og:description" content="Why an LLM's context is a budget, not a target." />
+    <meta property="og:url" content="https://ingebrigtnygard.com/blog/context-engineering.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:image" content="https://ingebrigtnygard.com/favicon.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <title>Context Engineering — Ingebrigt Nygård</title>
+    <link rel="icon" type="image/png" href="../favicon.png" />
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <main class="page-shell">
+      <header class="article-header">
+        <a class="back-link" href="index.html">← Blog</a>
+        <p class="post-meta">August 29, 2026 · 6 min read</p>
+        <h1>Context Engineering</h1>
+        <dl class="term-definition">
+          <div><dt>Pronounced</dt><dd>/ˈkɒn.tekst ˌen.dʒɪˈnɪə.rɪŋ/</dd></div>
+          <div><dt>Definition</dt><dd>The deliberate practice of choosing, shaping, and maintaining the information an AI model receives for the task at hand.</dd></div>
+        </dl>
+      </header>
+
+      <article class="prose">
+        <p>Have you ever found yourself deep into a conversation with a language model, pushed back on one of its answers, and received something along the lines of:</p>
+        <blockquote><p>"You are absolutely right."</p></blockquote>
+        <p>Or:</p>
+        <blockquote><p>"You are right to question that."</p></blockquote>
+        <p>For a moment, you might think you have outsmarted the language model. Maybe you have. But it might also be a sign that the conversation has started to drift and the model is struggling with the context you have built up.</p>
+        <p>The longer the conversation gets, the more information the model has to work with: your original instructions, previous answers, corrections, abandoned ideas, tool results, searches, and assumptions that may no longer be relevant.</p>
+        <p>And that is where context engineering becomes important.</p>
+        <h2>Context Is a Budget</h2>
+        <p>When we talk about LLMs, we often talk about prompt engineering: how to write the perfect prompt.</p>
+        <p>Context engineering is a broader idea. It is about deciding what information the model should have available when answering your question.</p>
+        <p>Even before you write your first message, an application may already provide the model with context. There can be system instructions telling it how to behave, information about available tools, skills, or other application-specific instructions.</p>
+        <p>For developers working with coding agents, even more information can enter the context as the agent works. Web searches, files, tool calls, MCP servers, documentation, command output, and previous reasoning can all add information.</p>
+        <p>It is tempting to think that giving the model as much information as possible will make it smarter.</p>
+        <p>But context is a budget, not a target. Modern models can have very large context windows. But the maximum context window and the amount of context a model can effectively reason over are not necessarily the same thing.</p>
+        <p>The important question isn't:</p>
+        <p><strong>"How much can I fit into the context window?"</strong></p>
+        <p>It is:</p>
+        <p><strong>"What actually deserves to be in the context window for the task I am trying to solve right now?"</strong></p>
+        <h2>An Example</h2>
+        <p>This becomes especially noticeable when you have been working with an LLM for a while.</p>
+        <p>You start with one approach. It doesn't work.</p>
+        <p>You correct the model.</p>
+        <p>It tries something else.</p>
+        <p>You change direction.</p>
+        <p>It makes an assumption that you correct.</p>
+        <p>Twenty messages later, you might finally know exactly what you want — but the model is still sitting there with the history of how you got there.</p>
+        <p>For a human conversation, we have more than the literal words being spoken. We use tone, emphasis, body language, and our understanding of the conversation to figure out what matters.</p>
+        <p>An LLM does not have that same understanding of importance. If something is important, we need to make that importance clear through the context we give it.</p>
+        <p>Sometimes the best context engineering technique is therefore surprisingly simple:</p>
+        <p><strong>Start a new session.</strong></p>
+        <p>Think of it like a whiteboard. After an hour of discussing different approaches, crossing things out and changing direction, you might understand the problem much better than when you started.</p>
+        <p>Instead of continuing to write in the tiny remaining spaces on the whiteboard, clean the whole board and write down the few things you now know actually matter.</p>
+        <h2>Keep What Matters</h2>
+        <p>Starting a new session doesn't mean throwing away everything you have learned.</p>
+        <p>Before starting over, ask the model to summarize the important findings, decisions, constraints, and remaining questions.</p>
+        <p>Then read that summary yourself.</p>
+        <p>This part matters.</p>
+        <p>Summaries are lossy. Something that was important to you might not be what the model considers important enough to preserve. Check numbers, decisions, definitions, constraints, and anything else that would materially change the next session.</p>
+        <p>Then start a fresh session with the information you actually need.</p>
+        <p>Some applications and coding agents also perform automatic context compaction as conversations grow. Exactly how this works depends on the application, and you should not necessarily assume that automatic compaction will preserve the same information that <em>you</em> consider important.</p>
+        <p>Sometimes manually deciding what carries forward is the better option.</p>
+        <p>That is context engineering too.</p>
+        <h2>A Practical Habit</h2>
+        <p>You don't need to understand tokenizers, attention mechanisms, or model architecture to manage context better.</p>
+        <p>A few simple habits go a long way:</p>
+        <ul>
+          <li>Start a session with a clear goal.</li>
+          <li>Make important constraints explicit.</li>
+          <li>Don't add information just because you have it.</li>
+          <li>When the task changes significantly, consider starting a new session.</li>
+          <li>If you have spent several messages correcting the model, consider whether starting fresh would be easier.</li>
+          <li>Before resetting, summarize what matters and review the summary yourself.</li>
+          <li>Don't paste an entire old conversation into a new one when five bullet points would do.</li>
+        </ul>
+        <p>And perhaps, if you find yourself arguing with the model more than actually getting work done, that is a pretty good sign that it might be time for a reset.</p>
+        <h2>The Dumb Zone</h2>
+        <p>And this brings us back to:</p>
+        <blockquote><p>"You are absolutely right."</p></blockquote>
+        <p>Obviously, that phrase does not scientifically prove that your context has gone bad. Models can be agreeable for many reasons, and excessive agreement itself is a known behavior often discussed as <strong>sycophancy</strong>.</p>
+        <p>But after seeing the phrase one too many times during long coding sessions, and hearing it explained by Dex Horthy on <a href="https://newsletter.pragmaticengineer.com/p/context-engineering-with-dex-horthy">The Pragmatic Engineer</a>, I thought it would be funny to treat it as a warning sign.</p>
+        <p>That became <a href="https://github.com/ingin97/pi-dumb-zone"><strong>pi-dumb-zone</strong></a>, a small extension I made for Pi that watches for suspiciously agreeable phrases and warns you that perhaps — just perhaps — it is time to look at your context.</p>
+        <figure class="article-image">
+          <img src="assets/pi-dumb-zone-header.png" alt="pi-dumb-zone extension warning display in Pi" width="1560" height="620" />
+          <figcaption>The pi-dumb-zone extension in action.</figcaption>
+        </figure>
+        <p>It is mostly a joke.</p>
+        <p>But the problem behind the joke isn't.</p>
+        <p>Context engineering isn't only something people building AI agents need to think about. Every time you decide to start a new conversation, remove irrelevant information, summarize an old session, or explicitly tell a model what matters, you are doing context engineering.</p>
+        <p>The goal isn't to give the model everything you know.</p>
+        <p>It is to give it what it needs right now.</p>
+        <section class="article-references" aria-labelledby="further-reading">
+          <h2 id="further-reading">Further reading</h2>
+        <ul>
+          <li><a href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents">Effective Context Engineering for AI Agents</a> — Anthropic</li>
+          <li><a href="https://arxiv.org/abs/2307.03172">Lost in the Middle: How Language Models Use Long Contexts</a></li>
+          <li><a href="https://openai.com/index/expanding-on-sycophancy/">Expanding on what we missed with sycophancy</a> — OpenAI</li>
+        </ul>
+        </section>
+      </article>
+
+      <footer><span>© <span id="year"></span> Ingebrigt Nygård</span><span>A small place on the web.</span></footer>
+    </main>
+    <script src="../script.js"></script>
+  </body>
+</html>

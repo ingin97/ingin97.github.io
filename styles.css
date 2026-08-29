@@ -51,6 +51,38 @@ section#writing { border-top: 1px solid var(--line); padding: 28px 0 132px; }
 h2 { margin: 0; color: var(--accent); font-size: 17px; font-weight: 600; }
 .empty-state { max-width: 450px; margin: 25px 0 0; color: var(--muted); font-size: 15px; line-height: 1.65; }
 .empty-state span { color: var(--ink); font-size: 15px; font-style: italic; font-weight: 600; }
+.post-preview { max-width: 560px; margin-top: 25px; }
+.post-preview h2, .post-preview h3 { margin: 5px 0 10px; font-size: 20px; line-height: 1.35; }
+.post-preview h2 a, .post-preview h3 a { text-decoration: none; }
+.post-preview p:not(.post-meta) { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.65; }
+.post-meta { margin: 0; color: var(--muted); font-size: 12px; }
+.read-more, .blog-link { display: inline-block; margin-top: 14px; font-size: 13px; }
+.blog-link { margin: 48px 0 0; }
+.page-shell { max-width: 760px; }
+.page-header, .article-header { padding: 76px 0 58px; }
+.back-link { display: inline-block; margin-bottom: 42px; font-size: 13px; }
+.page-header h1, .article-header h1 { margin-bottom: 15px; }
+.page-header > p { max-width: 490px; margin: 0; color: var(--muted); font-size: 15px; line-height: 1.65; }
+.post-list { border-top: 1px solid var(--line); padding: 4px 0 114px; }
+.post-list .post-preview { padding: 28px 0 30px; margin: 0; border-bottom: 1px solid var(--line); }
+.article-header { padding-bottom: 38px; }
+.article-header .post-meta { margin-bottom: 14px; }
+.term-definition { max-width: 560px; margin: 28px 0 0; padding: 17px 0 0; border-top: 1px solid var(--line); }
+.term-definition div { display: grid; grid-template-columns: 105px minmax(0, 1fr); gap: 15px; padding: 6px 0; font-size: 13px; line-height: 1.55; }
+.term-definition dt { color: var(--muted); }
+.term-definition dd { margin: 0; }
+.prose { max-width: 610px; padding: 0 0 100px; }
+.prose h2 { margin: 45px 0 18px; color: var(--ink); font-size: 21px; line-height: 1.35; }
+.prose h2:first-child { margin-top: 0; }
+.prose p, .prose li { font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace; font-size: 15px; line-height: 1.75; }
+.prose p { margin: 0 0 18px; }
+.prose ul { margin: 0 0 18px; padding-left: 22px; }
+.prose li + li { margin-top: 5px; }
+.prose blockquote { margin: 20px 0; padding: 2px 0 2px 18px; border-left: 2px solid var(--line); }
+.prose blockquote p { margin: 0; }
+.article-image { margin: 28px 0; }
+.article-image img { display: block; width: 100%; height: auto; border: 1px solid var(--line); }
+.article-image figcaption { margin-top: 9px; color: var(--muted); font-size: 12px; line-height: 1.5; }
 footer { display: flex; justify-content: space-between; border-top: 1px solid var(--line); padding: 25px 0 31px; color: var(--muted); font-size: 12px; }
 @media (max-width: 600px) {
   main { padding: 0 20px; border-inline: 0; }
@@ -66,6 +98,13 @@ footer { display: flex; justify-content: space-between; border-top: 1px solid va
   .intro p { font-size: 15px; }
   section#writing { padding: 24px 0 84px; }
   .empty-state { margin-top: 20px; }
+  .page-header, .article-header { padding: 50px 0 42px; }
+  .back-link { margin-bottom: 30px; }
+  .post-list { padding-bottom: 76px; }
+  .article-header { padding-bottom: 30px; }
+  .term-definition div { grid-template-columns: 1fr; gap: 2px; padding: 7px 0; }
+  .prose { padding-bottom: 66px; }
+  .prose h2 { margin-top: 36px; font-size: 19px; }
   footer { flex-direction: column; gap: 8px; padding: 22px 0 28px; line-height: 1.5; }
 }
 
