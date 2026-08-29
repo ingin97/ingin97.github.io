@@ -127,5 +127,4 @@ It is to give it what it needs right now.
 ## Further reading
 
 - [Effective Context Engineering for AI Agents](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents) — Anthropic
-- [Lost in the Middle: How Language Models Use Long Contexts](https://arxiv.org/abs/2307.03172)
 - [Expanding on what we missed with sycophancy](https://openai.com/index/expanding-on-sycophancy/) — OpenAI
